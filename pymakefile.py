@@ -376,7 +376,6 @@ def _main() -> None:
 
 # </editor-fold>
 
-
 # <editor-fold desc="Tasks">
 @task
 def format(check: str = "false") -> None:  # noqa: A001  (shadows builtin intentionally)

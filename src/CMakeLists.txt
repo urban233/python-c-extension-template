@@ -47,7 +47,7 @@ set(ALL_COMPILER_DEFS
 )
 
 set(ALL_SRC
-        Engine.cpp
+        Molecule.cpp
         ext.cpp
 )
 
