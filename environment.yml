@@ -1,0 +1,22 @@
+name: python_c_ext_dev
+channels:
+  - main
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.13
+
+  # --- Developer Tools ---
+  - pytest=9.0.3
+  - ruff=0.15.11
+  - conda-pack=0.9.1
+  - clang-tools
+  - pip
+  - pip:
+      - build
+
+  # --- C++ Build Chain ---
+  - cmake
+  - ninja
+  - cxx-compiler
+  - nanobind

@@ -1,0 +1,7 @@
+name: cbiomol_prod
+channels:
+  - main
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.13

@@ -1,0 +1,55 @@
+[build-system]
+requires = [
+  "scikit-build-core",
+  "setuptools>=69.2.0",
+  "numpy>=2.0"
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "python_c_ext"
+version = "0.1.0"
+description = "Python-C-Ext - A generic Python C Extension."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [
+  { name = "Martin Urban", email = "martin.urban@studmail.w-hs.de" },
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.2.2",
+  "pytest",
+  "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/urban233/python-c-extension-template"
+Documentation = "https://github.com/urban233/python-c-extension-template"
+Repository = "https://github.com/urban233/python-c-extension-template"
+
+[tool.scikit-build]
+build.verbose = true
+logging.level = "DEBUG"
+sdist.include = [
+  "build",
+]
+
+# Instructs scikit-build-core to build in RelWithDebInfo by default
+# to protect from the Windows MSVC _DEBUG heap corruption trap
+cmake.build-type = "RelWithDebInfo"
+
+[tool.scikit-build.wheel.packages]
+python_c_ext = "python_c_ext"
+
+[tool.cibuildwheel]
+build = ["cp311-*", "cp312-*", "cp313-*", "cp314-*"]
+# Skip Linux 32-bit builds and AlpineLinux builds
+skip = ["*-manylinux_i686", "*musllinux*"]
+test-requires = ["pytest", "importlib_metadata"]
+test-command = "pytest {project}/tests/"
+
+[tool.cibuildwheel.linux]
+before-all = "yum install -y perl perl-IPC-Cmd zip"
+manylinux-x86_64-image = "manylinux_2_28"

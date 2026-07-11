@@ -1,0 +1,77 @@
+# Ruff configuration
+# For more info, see: https://docs.astral.sh/ruff/configuration/
+
+# Set the target Python version
+target-version = "py313"
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".gemini",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "pymol",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 80
+
+[lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = [
+    "F401",  # unused-import
+    # "ANN101",  # Missing type annotation
+    "D208",  # Docstring is over-indented
+    # "E501",  # Line too long (x > 80)
+    "ANN201",  # Missing return type annotation for public function
+    "D212",  # Multi-line docstring summary should start at the first line
+    "A003",  # builtin-attribute-shadowing
+    "W291",  # trailing-whitespace
+    "PTH110",  # `os.path.exists()` should be replaced by `pathlib.Path.exists()`
+    "Q000",  # Single quotes found but double quotes preferred
+]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+# Full list of rules: https://docs.astral.sh/ruff/rules/
+fixable = ["D208", "W291", "PTH110"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
