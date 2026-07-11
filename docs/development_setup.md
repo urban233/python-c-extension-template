@@ -9,29 +9,6 @@ Please follow the setup instructions carefully depending on your use case.
 
 * [**Miniforge3**](https://conda-forge.org/download/) (or another Conda distribution)
 
-### Linux
-It might be necessary to install the following packages to provide the proper OpenGL headers:
-
-#### **Debian / Ubuntu / Linux Mint / Pop!_OS**
-```bash
-sudo apt install libgl1-mesa-dev libglvnd-dev
-```
-
-#### **Fedora / RHEL / Rocky Linux / CentOS**
-```bash
-sudo dnf install mesa-libGL-devel libglvnd-devel
-```
-
-#### **Arch Linux / Manjaro / EndeavourOS**
-```bash
-sudo pacman -S mesa libglvnd
-```
-
-#### **Alpine Linux**
-```bash
-sudo apk add mesa-dev libglvnd-dev
-```
-
 ---
 
 ## ⚠️ Important Note on JetBrains IDEs on Windows (and maybe other platforms)
@@ -48,19 +25,12 @@ After creating the environment, install dependencies using the provided `environ
 
 ## Development
 
-### 1. Clone the Repository
-
-First of all, clone the repository:
-```bash
-git clone https://github.com/urban233/cBioMOL.git
-```
-
-### 2. Set up the Conda Environment
-cBioMOL uses **Conda** for dependency management for both Python and C++.
+### 1. Set up the Conda Environment
+Python-Cpp-Extension uses **Conda** for dependency management for both Python and C++.
 
 #### Steps:
 
-1. Open the repository in **PyCharm** or **preferred** in **CLion**.
+1. Open the repository in **CLion**.
 2. Create a new Conda environment:
 
     * Go to **Settings → Build, Execution, Deployment → Python Interpreter**
@@ -90,7 +60,7 @@ cBioMOL uses **Conda** for dependency management for both Python and C++.
 ---
 
 ### 3. Set up CMake (CLion)
-cBioMOL uses **CMake** for cross-platform build configuration of the C++ code.
+Python-Cpp-Extension uses **CMake** for cross-platform build configuration of the C++ code.
 **However**, if you are using **CLion**, it is recommended to set up the CMake
 configuration even if you are only working with Python code.
 
@@ -131,10 +101,6 @@ Example for **Linux**:
 
 5. Reload the CMake configurations using the `Reload CMake Project` button in the CMake tool window. 
 
-> ⚠️ Opening the full repository in both PyCharm and CLion can cause configuration conflicts.
-> A workaround would be to rename the .idea directory in the repository before opening it in PyCharm or CLion.
-> The .gitignore file already includes the folders `.idea_pycharm` and `.idea_clion`.
-> The reason it comes to conflicts is solely the .idea folder for JetBrains IDEs.
 ---
 
 ## Common Pitfalls
