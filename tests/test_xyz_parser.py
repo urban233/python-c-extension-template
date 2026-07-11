@@ -1,3 +1,9 @@
+"""Test suite for the C++ nanobind XYZ parser and NumPy utility functions.
+
+This test module verifies the correctness of XYZ file parsing, coordinate 
+extraction, center of mass calculation, element filtering, and distance matrix computations.
+"""
+
 import os
 import tempfile
 import pytest
@@ -15,6 +21,11 @@ H  -0.758602   0.000000   0.504284
 
 @pytest.fixture
 def temp_xyz_file():
+    """Fixture that generates a temporary XYZ file containing a water molecule.
+
+    Yields:
+        str: The absolute path of the generated temporary XYZ file.
+    """
     with tempfile.NamedTemporaryFile(mode='w', suffix='.xyz', delete=False) as f:
         f.write(WATER_XYZ)
         filepath = f.name
@@ -22,6 +33,11 @@ def temp_xyz_file():
     os.remove(filepath)
 
 def test_molecule_loading(temp_xyz_file):
+    """Verifies that the Molecule object successfully parses metadata and atom contents.
+
+    Args:
+        temp_xyz_file (str): The temporary XYZ file path provided by the fixture.
+    """
     # Load Molecule using the C++ static method
     mol = Molecule.from_xyz_file(temp_xyz_file)
     
@@ -48,6 +64,11 @@ def test_molecule_loading(temp_xyz_file):
     assert all(a.symbol == "H" for a in h_atoms)
 
 def test_numpy_integration(temp_xyz_file):
+    """Verifies that the coordinate array extraction and distance matrices are accurate.
+
+    Args:
+        temp_xyz_file (str): The temporary XYZ file path provided by the fixture.
+    """
     mol = Molecule.from_xyz_file(temp_xyz_file)
     coords = to_numpy_coords(mol)
     
