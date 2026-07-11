@@ -1,4 +1,4 @@
-name: cbiomol_prod
+name: pymol_c_ext_prod
 channels:
   - main
   - conda-forge
